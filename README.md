@@ -20,6 +20,30 @@ Command line:
 
 In JS code:
 
+```javascript
 	var Proback = require('proback.js');
 	...
-	assigner.assign( obj1, obj2[, obj3[, respect]] );
+	new Promise( function (resolve, reject) {
+		//some callback is needed?
+		object.fnCallWithCallback( data, Proback.handler( null, resolve, reject ) )
+	}).then( function (res) {
+		expect(res).to.equal('Done.')
+		done()
+	})
+```
+
+```javascript
+	var Proback = require('proback.js');
+	...
+	new Promise( function (resolve, reject) {
+		//some callback is needed?
+		object.fnCallWithCallback( data, function (err, res) {
+			if (err) return Proback.rejecter(err, null, reject)
+			// some operation
+			return Proback.resolver(res, null, resolve)
+		} )
+	}).then( function (res) {
+		expect(res).to.equal('Done.')
+		done()
+	})
+```
