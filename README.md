@@ -23,27 +23,33 @@ In JS code:
 ```javascript
 	var Proback = require('proback.js');
 	...
-	new Promise( function (resolve, reject) {
-		//some callback is needed?
-		object.fnCallWithCallback( data, Proback.handler( null, resolve, reject ) )
-	}).then( function (res) {
-		expect(res).to.equal('Done.')
-		done()
-	})
+	// your service. If callback is present, works as expected, If not, promise will be provided.
+	function yourService( data, callback ){
+		new Promise( function (resolve, reject) {
+			//some callback is needed?
+			object.fnCallWithCallback( data, Proback.handler( null, resolve, reject ) )
+		}).then( function (res) {
+			expect(res).to.equal('Done.')
+			done()
+		})
+	}
 ```
 
 ```javascript
 	var Proback = require('proback.js');
 	...
-	new Promise( function (resolve, reject) {
-		//some callback is needed?
-		object.fnCallWithCallback( data, function (err, res) {
-			if (err) return Proback.rejecter(err, null, reject)
-			// some operation
-			return Proback.resolver(res, null, resolve)
-		} )
-	}).then( function (res) {
-		expect(res).to.equal('Done.')
-		done()
-	})
+	// your service. If callback is present, works as expected, If not, promise will be provided.
+	function yourService( data, callback ){
+		return new Promise( function (resolve, reject) {
+			//some callback is needed?
+			object.fnCallWithCallback( data, function (err, res) {
+				if (err) return Proback.rejecter(err, null, reject)
+				// some operation
+				return Proback.resolver(res, null, resolve)
+			} )
+		}).then( function (res) {
+			expect(res).to.equal('Done.')
+			done()
+		})
+	}
 ```
