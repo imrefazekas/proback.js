@@ -1,6 +1,6 @@
 {
   "name": "proback.js",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Tiny libary to aid Promise/Callback dual API design",
   "keywords": [
     "promise", "callback", "api", "design"
@@ -25,7 +25,7 @@
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
-    "gulp-load-plugins": "^1.2.4",
+    "gulp-load-plugins": "^1.4.0",
     "gulp-mocha": "^3.0.1"
   },
   "browser": {
