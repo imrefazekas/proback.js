@@ -1,6 +1,6 @@
 {
   "name": "proback.js",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Tiny libary to aid Promise/Callback dual API design",
   "keywords": [
     "promise",
