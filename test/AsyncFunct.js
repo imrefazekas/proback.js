@@ -5,3 +5,10 @@ let stopper = async function ( promise ) {
 }
 
 console.log( stopper( new Promise( () => {} ) ) )
+
+
+let failer = async function ( ) {
+	let timestamp = Date.now()
+	return Date.now() - timestamp
+}
+console.log( failer( ) )
